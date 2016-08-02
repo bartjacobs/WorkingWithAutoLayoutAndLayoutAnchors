@@ -36,93 +36,120 @@ class ViewController: UIViewController {
         // Add to Superview
         view.addSubview(containerView)
 
-        // Width
-        let constraintWidth = NSLayoutConstraint(
-            item: containerView,
-            attribute: .Width,
-            relatedBy: .LessThanOrEqual,
-            toItem: nil,
-            attribute: .NotAnAttribute,
-            multiplier: 1.0,
-            constant: 320.0
-        )
-        
-        // Add Constraint
-        containerView.addConstraint(constraintWidth)
+        /*
+         // Width
+         let constraintWidth = NSLayoutConstraint(
+         item: containerView,
+         attribute: .Width,
+         relatedBy: .LessThanOrEqual,
+         toItem: nil,
+         attribute: .NotAnAttribute,
+         multiplier: 1.0,
+         constant: 320.0
+         )
 
-        // Center
-        let constraintCenter = NSLayoutConstraint(
-            item: containerView,
-            attribute: .CenterX,
-            relatedBy: .Equal,
-            toItem: view,
-            attribute: .CenterX,
-            multiplier: 1.0,
-            constant: 0.0
-        )
+         // Add Constraint
+         containerView.addConstraint(constraintWidth)
+         */
 
-        // Add Constraint
-        view.addConstraint(constraintCenter)
+        containerView.widthAnchor.constraintLessThanOrEqualToConstant(320.0).active = true
 
-        // Top
-        let constraintTop = NSLayoutConstraint(
-            item: containerView,
-            attribute: .Top,
-            relatedBy: .Equal,
-            toItem: topLayoutGuide,
-            attribute: .Bottom,
-            multiplier: 1.0,
-            constant: 8.0
-        )
+        /*
+         // Center
+         let constraintCenter = NSLayoutConstraint(
+         item: containerView,
+         attribute: .CenterX,
+         relatedBy: .Equal,
+         toItem: view,
+         attribute: .CenterX,
+         multiplier: 1.0,
+         constant: 0.0
+         )
 
-        // Add Constraint
-        view.addConstraint(constraintTop)
+         // Add Constraint
+         view.addConstraint(constraintCenter)
+         */
 
-        // Bottom
-        let constraintBottom = NSLayoutConstraint(
-            item: containerView,
-            attribute: .Bottom,
-            relatedBy: .Equal,
-            toItem: bottomLayoutGuide,
-            attribute: .Top,
-            multiplier: 1.0,
-            constant: 0.0
-        )
+        containerView.centerXAnchor.constraintEqualToAnchor(view.centerYAnchor).active = true
 
-        // Add Constraint
-        view.addConstraint(constraintBottom)
+        /*
+         // Top
+         let constraintTop = NSLayoutConstraint(item: containerView,
+         attribute: .Top,
+         relatedBy: .Equal,
+         toItem: topLayoutGuide,
+         attribute: .Bottom,
+         multiplier: 1.0,
+         constant: 8.0
+         )
 
-        // Leading
-        let constraintLeading = NSLayoutConstraint(
-            item: containerView,
-            attribute: .Leading,
-            relatedBy: .Equal,
-            toItem: view,
-            attribute: .Leading,
-            multiplier: 1.0,
-            constant: 0.0
-        )
-        
+         // Add Constraint
+         view.addConstraint(constraintTop)
+         */
+
+        containerView.topAnchor.constraintEqualToAnchor(topLayoutGuide.bottomAnchor, constant: 8.0).active = true
+
+        /*
+         // Bottom
+         let constraintBottom = NSLayoutConstraint(
+         item: containerView,
+         attribute: .Bottom,
+         relatedBy: .Equal,
+         toItem: bottomLayoutGuide,
+         attribute: .Top,
+         multiplier: 1.0,
+         constant: 0.0
+         )
+
+         // Add Constraint
+         view.addConstraint(constraintBottom)
+         */
+
+        containerView.bottomAnchor.constraintEqualToAnchor(bottomLayoutGuide.topAnchor, constant: 8.0).active = true
+
+        /*
+         // Leading
+         let constraintLeading = NSLayoutConstraint(
+         item: containerView,
+         attribute: .Leading,
+         relatedBy: .Equal,
+         toItem: view,
+         attribute: .Leading,
+         multiplier: 1.0,
+         constant: 0.0
+         )
+
+         constraintLeading.priority = 750.0
+
+         // Add Constraint
+         view.addConstraint(constraintLeading)
+         */
+
+        let constraintLeading = containerView.leadingAnchor.constraintEqualToAnchor(view.leadingAnchor, constant: 0.0)
         constraintLeading.priority = 750.0
-        
-        // Add Constraint
-        view.addConstraint(constraintLeading)
-        
-        // Trailing
-        let constraintTrailing = NSLayoutConstraint(
-            item: containerView,
-            attribute: .Trailing,
-            relatedBy: .Equal,
-            toItem: view,
-            attribute: .Trailing,
-            multiplier: 1.0,
-            constant: 0.0
-        )
-        
+        constraintLeading.active = true
+
+        /*
+         // Trailing
+         let constraintTrailing = NSLayoutConstraint(
+         item: containerView,
+         attribute: .Trailing,
+         relatedBy: .Equal,
+         toItem: view,
+         attribute: .Trailing,
+         multiplier: 1.0,
+         constant: 0.0
+         )
+
+         constraintTrailing.priority = 750.0
+
+         // Add Constraint
+         view.addConstraint(constraintTrailing)
+         */
+
+        let constraintTrailing = containerView.trailingAnchor.constraintEqualToAnchor(view.trailingAnchor, constant: 0.0)
         constraintTrailing.priority = 750.0
-        
-        // Add Constraint
-        view.addConstraint(constraintTrailing)
+        constraintTrailing.active = true
     }
 
     private func setupForm() {
